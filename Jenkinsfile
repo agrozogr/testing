@@ -9,10 +9,11 @@ pipeline {
         stage("Clone Git Repository") {
                     steps {
                         git(
-                            url: "https://github.com/agrozogr/testing",
+                            url: "git@github.com:agrozogr/testing.git",
                             branch: "main",
                             changelog: true,
                             poll: true
+                            credentialsId: 'ssh'
                         )
                     }
                 }
