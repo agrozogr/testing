@@ -12,7 +12,7 @@ pipeline {
                             url: "git@github.com:agrozogr/testing.git",
                             branch: "main",
                             changelog: true,
-                            poll: true
+                            poll: true,
                             credentialsId: 'ssh'
                         )
                     }
