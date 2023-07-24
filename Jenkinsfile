@@ -32,7 +32,8 @@ pipeline {
         }
         stage('add test and Timestamp') {
             steps {
-                    sh 'echo "${BUILD_TIMESTAMP} PRjob executed" >> buildlog.txt'
+                    sh 'date_current=$(date "+%F-%H-%M-%S")',
+                    sh 'echo "$date_current PRjob executed" >> buildlog.txt'
                 }
             }
         stage ('JOBLOG NEW') {
