@@ -30,5 +30,10 @@ pipeline {
                 }
             }
         }
+        stage('lolkek') {
+            steps {
+                sh 'curl "${JENKINS_URL}/job/${JOB_NAME}/lastBuild/consoleText"'
+            }
+        }
     }
 }
