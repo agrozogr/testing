@@ -7,15 +7,16 @@ pipeline {
             }
         }
         stage("Clone Git Repository") {
-                    steps {
-                        git(
-                            url: "git@github.com:agrozogr/testing.git",
-                            branch: "main",
-                            changelog: true,
-                            poll: true,
-                            credentialsId: 'ssh'
-                        )
-                    }
+            steps {
+                git(
+                    url: "git@github.com:agrozogr/testing.git",
+                    branch: "main",
+                    changelog: true,
+                    poll: true,
+                    credentialsId: 'ssh'
+                )
+            }
+        }
         stage('create job.log file') {
             steps {
                 script {
@@ -30,5 +31,4 @@ pipeline {
             }
         }
     }
-}
 }
