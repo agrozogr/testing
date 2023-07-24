@@ -1,0 +1,22 @@
+version: '3.8'
+services:
+  jenkins:
+    image: jenkins/jenkins:lts
+    privileged: true
+    user: root
+    ports:
+      - 8080:8080
+      - 50000:50000
+    container_name: jenkins
+    volumes:
+      - /home/zog/jenkins_compose/jenkins_configuration:/var/jenkins_home
+      - /var/run/docker.sock:/var/run/docker.sock
+  agent:
+    image: jenkins/ssh-agent:jdk11
+    privileged: true
+    user: root
+    container_name: agent
+    expose:
+      - 22
+    environment:
+      - JENKINS_AGENT_SSH_PUBKEY=ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDPeYEjiMzoP4gC8MJqutj9UP0oOQEUpgM8pLctTw7NfVYFRFA4F+VWKh5Dx+imSCeKvrc68RjrZ59ia650OAWGF39QwNDNjaL+fLcKfl7cdKBOuWPYvcOVvAFrpSSFlgr9vxSQXlK7qFbrmRPVR3kqj/A9+AIxR+c5omMkE1slC5zCmsyXkQz+3/kunJoin5LgtgNRj8rdEgEat+xucDyBH7Q/hsKVM0F+vIWGx3eEShPyEwgfXjgcmHwqxs//qkv84wJ2LH6MKrYyUwG3s9u0UPT2GnSQAJEgPD/1jHUD5CVthM356/ySSNskymCjUl7+SgRLwEvatHJc0To9BNX1WskClaHRpwuhg7rbNyv4uY78fy3xPY/NHeZw/C5B0FPx1bigaUIcV50zglLZbUaTgl4azMK8vKv7+RiqRJg3PGJtsQWIjiZdPRE58l3ChRdc9BOay0nODwYgDQdKznyRr2EJ63h884VHdWUsoRmuBkRFH5WEXlXtdG6ZNFiCdRE= zog@agrozogr
