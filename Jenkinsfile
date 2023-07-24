@@ -30,6 +30,11 @@ pipeline {
                 }
             }
         }
+        stage('add test and Timestamp') {
+            steps {
+                    sh 'echo "${BUILD_TIMESTAMP} PRjob executed" >> buildlog.txt'
+                }
+            }
         stage('lolkek') {
             steps {
             //    sh 'curl "${JENKINS_URL}/job/${JOB_NAME}/lastBuild/consoleText"'
