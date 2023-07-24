@@ -32,7 +32,8 @@ pipeline {
         }
         stage('lolkek') {
             steps {
-                sh 'curl "${JENKINS_URL}/job/${JOB_NAME}/lastBuild/consoleText"'
+            //    sh 'curl "${JENKINS_URL}/job/${JOB_NAME}/lastBuild/consoleText"'
+                  sh 'cat buildlog.txt'
             }
         }
     }
