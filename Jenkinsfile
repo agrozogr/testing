@@ -50,13 +50,18 @@ pipeline {
                         '''
                     }
                 }
-        stage("COPY new file job log to GitHub repo") {
+        stage("====================== COPY new file job log to GitHub repo") {
                     steps {
                     sh "cd ${WORKSPACE}"
                     sh "git add job.log"
                     sh "git commit -m 'Add job.log file from Jenkins Pipeline'"
-                    sh "git push --set-upstream origin main"
                     }
                 }
+        stage("====================== Push to Git Repo") {
+                    steps {
+                        withCredentials([gitUsernamePassword(credentialsId: 'github_token', gitToolName: 'Default')]) {
+                            sh "git push -u origin main"
+                        }
+                    }
     }
 }
