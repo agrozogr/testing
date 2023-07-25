@@ -47,7 +47,6 @@ pipeline {
         echo "====================== JOB INFO IS "
         date_current=$(date "+%F-%H-%M-%S")
         echo "====================== $date_current PRjob executed " >> ${WORKSPACE}/${BUILD_NUMBER}-log.txt
-\\        cat ${WORKSPACE}/${BUILD_NUMBER}-log.txt
                         '''
                     }
                 }
