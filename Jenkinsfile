@@ -1,11 +1,6 @@
 pipeline {
     agent any
     stages {
-        stage('Hello') {
-            steps {
-                echo 'Hello World'
-            }
-        }
         stage("Clone Git Repository") {
             steps {
                 git(
@@ -15,19 +10,6 @@ pipeline {
                     poll: true,
                     credentialsId: 'github_access_token4'
                 )
-            }
-        }
-        stage('Create job.log file') {
-            steps {
-                script {
-                    def logContent = Jenkins.getInstance()
-                        .getItemByFullName(env.JOB_NAME)
-                        .getBuildByNumber(
-                            Integer.parseInt(env.BUILD_NUMBER))
-                        .logFile.text
-                    // copy the log in the job's own workspace
-                    writeFile file: "job.log", text: logContent
-                }
             }
         }
         stage ('JOB LOG INGO') {
