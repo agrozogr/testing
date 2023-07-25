@@ -59,6 +59,9 @@ pipeline {
                 }
         stage("====================== Push to Git Repo") {
                     steps {
+                        withCredentials([gitUsernamePassword(credentialsId: 'github_token', gitToolName: 'Default')]) {
+                        sh "git push -u origin main"
+                    }
                         sh("git tag -a some_tag -m 'testJenkins'")
                         sh('git push git@github.com:agrozogr/testing.git --tags')
                     }
