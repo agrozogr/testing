@@ -39,7 +39,7 @@ pipeline {
         stage ('JOBLOG NEW') {
                     agent any
                     steps {
-                        echo '====================== Well, let's do this! ====================== '
+                        echo '====================== Well, JUST DO IT! ======================'
                         sh '''#!/bin/bash
         echo "====================== Hello from jenkins job, Morty. I did some shitty pipelines, so just check it! ======================"
         echo "Jobe Name = ${JOB_NAME}" >> ${WORKSPACE}/${BUILD_NUMBER}-log.txt
