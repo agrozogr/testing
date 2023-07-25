@@ -61,7 +61,7 @@ pipeline {
                 }
         stage("====================== Push to Git Repo") {
                     steps {
-                        withCredentials([gitUsernamePassword(credentialsId: 'github_token', gitToolName: 'Default')]) {
+                        withCredentials([gitUsernamePassword(credentialsId: 'jenkins2', gitToolName: 'Default')]) {
                             sh "git push -u origin main"
                         }
                     }
