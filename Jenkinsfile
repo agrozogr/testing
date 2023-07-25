@@ -55,7 +55,7 @@ pipeline {
                     steps {
                     sh "touch testfile"
                     sh "git add testfile"
-                    sh "git add ${WORKSPACE}/${BUILD_NUMBER}-log.txt"
+                    sh "git add {BUILD_NUMBER}-log.txt"
                     sh "git commit -m 'Add job.log file from Jenkins Pipeline'"
                     }
                 }
