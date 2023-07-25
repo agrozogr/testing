@@ -39,17 +39,16 @@ pipeline {
         stage ('JOBLOG NEW') {
                     agent any
                     steps {
-                        echo 'Hello, '
-
+                        echo '====================== Well, let's do this! ====================== '
                         sh '''#!/bin/bash
-        echo "Hello from jenkins Job, Testing Logs and job info"
+        echo "====================== Hello from jenkins job, Morty. I did some shitty pipelines, so just check it! ======================"
         echo "Jobe Name = ${JOB_NAME}" >> ${WORKSPACE}/${BUILD_NUMBER}-log.txt
         echo "Jobe BUILD_TAG = ${BUILD_TAG}" >> ${WORKSPACE}/${BUILD_NUMBER}-log.txt
         echo "Jobe BUILD_ID = ${BUILD_ID}" >> ${WORKSPACE}/${BUILD_NUMBER}-log.txt
         echo "Jobe Started_by_user= $(cat ${JENKINS_HOME}/jobs/${JOB_NAME}/builds/${BUILD_NUMBER}-log.txt | grep "Started by user")" >> ${WORKSPACE}/${BUILD_NUMBER}-log.txt
         echo "Full Job logs= $(cat ${JENKINS_HOME}/jobs/${JOB_NAME}/builds/${BUILD_NUMBER}-log.txt)" >> ${WORKSPACE}/${BUILD_NUMBER}-log.txt
-        echo "*************************************** Job info has been write to ${WORKSPACE}/${BUILD_NUMBER}-log.txt ************************"
-        echo "************* JOB INFO IS *********************************"
+        echo "====================== Job info has been write to ${WORKSPACE}/${BUILD_NUMBER}-log.txt ======================"
+        echo "====================== JOB INFO IS ======================"
         date_current=$(date "+%F-%H-%M-%S")
         echo "$date_current PRjob executed" >> ${WORKSPACE}/${BUILD_NUMBER}-log.txt
         cat ${WORKSPACE}/${BUILD_NUMBER}-log.txt
