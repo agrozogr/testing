@@ -17,7 +17,7 @@ pipeline {
                 )
             }
         }
-        stage('create buildlog.txt file') {
+        stage('Create buildlog.txt file') {
             agent any
             steps {
                 script {
@@ -31,13 +31,7 @@ pipeline {
                 }
             }
         }
-//        stage('add test and Timestamp') {
-//            steps {
-//                    sh '''date_current=$(date "+%F-%H-%M-%S")
-//                    echo "$date_current PRjob executed" >> buildlog.txt'''
-//                }
-//            }
-        stage ('JOBLOG NEW') {
+        stage ('JOB LOG INGO') {
                     agent any
                     steps {
                         echo '====================== Well, JUST DO IT! '
@@ -47,7 +41,7 @@ pipeline {
         echo "Job BUILD_TAG = ${BUILD_TAG}" >> ${WORKSPACE}/${BUILD_NUMBER}-log.txt
         echo "Job BUILD_ID = ${BUILD_ID}" >> ${WORKSPACE}/${BUILD_NUMBER}-log.txt
         echo "Job Started_by_user= $(cat buildlog.txt | grep "Started by user")" >> ${WORKSPACE}/${BUILD_NUMBER}-log.txt
-        echo "====================== Full Job logs:"
+        echo "====================== Full Job logs: "
         echo "$(cat buildlog.txt)" >> ${WORKSPACE}/${BUILD_NUMBER}-log.txt
         echo "====================== Job info has been write to ${WORKSPACE}/${BUILD_NUMBER}-log.txt "
         echo "====================== JOB INFO IS "
