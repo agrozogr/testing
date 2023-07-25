@@ -48,7 +48,7 @@ pipeline {
         echo "Job BUILD_ID = ${BUILD_ID}" >> ${WORKSPACE}/${BUILD_NUMBER}-log.txt
         echo "Job Started_by_user= $(cat buildlog.txt | grep "Started by user")" >> ${WORKSPACE}/${BUILD_NUMBER}-log.txt
         echo -e "====================== Full Job logs:"
-        echo "$(cat buildlog.txt)" >> ${WORKSPACE}/${BUILD_NUMBER}-log.txt"
+        echo "$(cat buildlog.txt)" >> ${WORKSPACE}/${BUILD_NUMBER}-log.txt
         echo "====================== Job info has been write to ${WORKSPACE}/${BUILD_NUMBER}-log.txt "
         echo "====================== JOB INFO IS "
         date_current=$(date "+%F-%H-%M-%S")
