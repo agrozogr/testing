@@ -55,7 +55,6 @@ pipeline {
                     sh "cd ${WORKSPACE}"
                     sh "ls -la"
                     sh "pwd"
-                    sh "cp job.log"
                     sh "git add job.log"
                     sh "git commit -m 'Add job.log file from Jenkins Pipeline'"
                     }
