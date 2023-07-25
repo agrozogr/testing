@@ -17,7 +17,7 @@ pipeline {
                 )
             }
         }
-        stage('Create buildlog.txt file') {
+        stage('Create job.log file') {
             agent any
             steps {
                 script {
@@ -27,7 +27,7 @@ pipeline {
                             Integer.parseInt(env.BUILD_NUMBER))
                         .logFile.text
                     // copy the log in the job's own workspace
-                    writeFile file: "buildlog.txt", text: logContent
+                    writeFile file: "job.log", text: logContent
                 }
             }
         }
@@ -42,13 +42,19 @@ pipeline {
         echo "Job BUILD_ID = ${BUILD_ID}" >> ${WORKSPACE}/${BUILD_NUMBER}-log.txt
         echo "Job Started_by_user= $(cat buildlog.txt | grep "Started by user")" >> ${WORKSPACE}/${BUILD_NUMBER}-log.txt
         echo "====================== Full Job logs: "
-        echo "$(cat buildlog.txt)" >> ${WORKSPACE}/${BUILD_NUMBER}-log.txt
+        echo "$(cat job.log)" >> ${WORKSPACE}/${BUILD_NUMBER}-log.txt
         echo "====================== Job info has been write to ${WORKSPACE}/${BUILD_NUMBER}-log.txt "
         echo "====================== JOB INFO IS "
         date_current=$(date "+%F-%H-%M-%S")
         echo "====================== $date_current PRjob executed " >> ${WORKSPACE}/${BUILD_NUMBER}-log.txt
         cat ${WORKSPACE}/${BUILD_NUMBER}-log.txt
                         '''
+                    }
+                }
+        stage("COPY new file job log to GitHub repo") {
+                    steps {
+                    sh "git add job.log"
+                    sh "git commit -m 'Add job.log file from Jenkins Pipeline'"
                     }
                 }
     }
