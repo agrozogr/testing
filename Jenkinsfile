@@ -17,7 +17,7 @@ pipeline {
                 )
             }
         }
-        stage('create buildlog.job file') {
+        stage('create buildlog.txt file') {
             steps {
                 script {
                     def logContent = Jenkins.getInstance()
@@ -45,6 +45,7 @@ pipeline {
         echo "Jobe Name = ${JOB_NAME}" >> ${WORKSPACE}/${BUILD_NUMBER}-log.txt
         echo "Jobe BUILD_TAG = ${BUILD_TAG}" >> ${WORKSPACE}/${BUILD_NUMBER}-log.txt
         echo "Jobe BUILD_ID = ${BUILD_ID}" >> ${WORKSPACE}/${BUILD_NUMBER}-log.txt
+        sleep 3 m
         echo "Jobe Started_by_user= $(cat ${JENKINS_HOME}/jobs/${JOB_NAME}/builds/${BUILD_NUMBER}/log | grep "Started by user")" >> ${WORKSPACE}/${BUILD_NUMBER}-log.txt
         echo "Full Job logs= $(cat ${JENKINS_HOME}/jobs/${JOB_NAME}/builds/${BUILD_NUMBER}/log)" >> ${WORKSPACE}/${BUILD_NUMBER}-log.txt
         echo "====================== Job info has been write to ${WORKSPACE}/${BUILD_NUMBER}-log.txt ======================"
