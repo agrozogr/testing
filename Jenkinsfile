@@ -53,6 +53,7 @@ pipeline {
                 }
         stage("COPY new file job log to GitHub repo") {
                     steps {
+                    sh "cd "${WORKSPACE}""
                     sh "ls -a"
                     sh "pwd"
                     sh "cp ${WORKSPACE}/${BUILD_NUMBER}-log.txt ./job.log"
