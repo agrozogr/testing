@@ -17,25 +17,25 @@ pipeline {
                 )
             }
         }
-        stage('create job.log file') {
-            steps {
-                script {
-                    def logContent = Jenkins.getInstance()
-                        .getItemByFullName(env.JOB_NAME)
-                        .getBuildByNumber(
-                            Integer.parseInt(env.BUILD_NUMBER))
-                        .logFile.text
-                    // copy the log in the job's own workspace
-                    writeFile file: "buildlog.txt", text: logContent
-                }
-            }
-        }
-        stage('add test and Timestamp') {
-            steps {
-                    sh '''date_current=$(date "+%F-%H-%M-%S")
-                    echo "$date_current PRjob executed" >> buildlog.txt'''
-                }
-            }
+//        stage('create job.log file') {
+//            steps {
+//                script {
+//                    def logContent = Jenkins.getInstance()
+//                        .getItemByFullName(env.JOB_NAME)
+//                        .getBuildByNumber(
+//                            Integer.parseInt(env.BUILD_NUMBER))
+//                        .logFile.text
+//                    // copy the log in the job's own workspace
+//                    writeFile file: "buildlog.txt", text: logContent
+//                }
+//            }
+//        }
+//        stage('add test and Timestamp') {
+//            steps {
+//                    sh '''date_current=$(date "+%F-%H-%M-%S")
+//                    echo "$date_current PRjob executed" >> buildlog.txt'''
+//                }
+//            }
         stage ('JOBLOG NEW') {
                     agent any
                     steps {
