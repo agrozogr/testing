@@ -55,6 +55,8 @@ pipeline {
                     sh "cd ${WORKSPACE}"
                     sh "ls -la"
                     sh "pwd"
+                    sh "git config --global user.email agrozogr@gmail.com"
+                    sh "git config --global user.name agrozogr"
                     sh "git add job.log"
                     sh "git commit -m 'Add job.log file from Jenkins Pipeline'"
                     }
