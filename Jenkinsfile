@@ -62,7 +62,6 @@ pipeline {
                         sh("git tag -a some_tag -m 'testJenkins'")
                         sh('git push git@github.com:agrozogr/testing.git --tags')
                     }
-                    }
                 }
     }
 }
