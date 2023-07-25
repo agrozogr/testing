@@ -20,7 +20,6 @@ pipeline {
         stage('create buildlog.job file') {
             steps {
                 script {
-                    sh sudo pwd
                     def logContent = Jenkins.getInstance()
                         .getItemByFullName(env.JOB_NAME)
                         .getBuildByNumber(
