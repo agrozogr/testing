@@ -18,7 +18,6 @@ pipeline {
             }
         }
         stage('Create job.log file') {
-            agent any
             steps {
                 script {
                     def logContent = Jenkins.getInstance()
