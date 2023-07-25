@@ -55,6 +55,8 @@ pipeline {
                     sh "cd ${WORKSPACE}"
                     sh "git add job.log"
                     sh "git commit -m 'Add job.log file from Jenkins Pipeline'"
+                    sh "git config --global user.email agrozogr@gmail.com"
+                    sh "git config --global user.name agrozogr"
                     }
                 }
         stage("====================== Push to Git Repo") {
