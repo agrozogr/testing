@@ -59,7 +59,10 @@ pipeline {
                 }
         stage("====================== Push to Git Repo") {
                     steps {
-                    sh "git push -u origin main"
+                    sshagent (credentials: ['ssh']) {
+                        sh("git tag -a some_tag -m 'testJenkins'")
+                        sh('git push git@github.com:agrozogr/testing.git --tags')
+                    }
                     }
                 }
     }
