@@ -13,7 +13,7 @@ pipeline {
                     branch: "main",
                     changelog: true,
                     poll: true,
-                    credentialsId: 'ssh'
+                    credentialsId: 'ssh2'
                 )
             }
         }
