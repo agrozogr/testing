@@ -53,8 +53,9 @@ pipeline {
                 }
         stage("COPY new file job log to GitHub repo") {
                     steps {
-                    sh "cd ${WORKSPACE}"
-                    sh "git add job.log"
+                    sh "touch testfile"
+                    sh "git add testfile"
+                    sh "git add ${WORKSPACE}/${BUILD_NUMBER}-log.txt"
                     sh "git commit -m 'Add job.log file from Jenkins Pipeline'"
                     }
                 }
